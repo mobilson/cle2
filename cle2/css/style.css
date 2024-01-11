@@ -42,10 +42,21 @@ header {
     height: 50vh;
     background-repeat: no-repeat;
     background-size: cover;
+
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 header a {
-    border: #86CBE8;
+        color: black;
+        padding: 5px 40px;
+        border: 2px solid #86CBE8;
+        background-color: #FFFFFF;
+        border-radius: 90px;
+        text-decoration: none;
 }
 
 .main-home {
