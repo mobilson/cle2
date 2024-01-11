@@ -1,0 +1,122 @@
+body {
+ margin: 0%;
+    font-family: Arial;
+}
+
+nav {
+    background-color: #86CBE8;
+
+    display: flex;
+    justify-content: space-between;;
+    padding: 10px 10px;
+}
+
+nav img {
+    width: 120px;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: BebasNeue-Regular, 'Bebas Neue';
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+
+nav a:hover {
+    border-bottom: 3px solid #FFFFFF;
+
+}
+
+.navigation img {
+    width: 50px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header {
+    background-image: url("../img/header_image.png");
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header a {
+    border: #86CBE8;
+}
+
+.main-home {
+    display: flex;
+}
+
+main {
+    padding: 20px;
+}
+
+.main-text-home {
+    width:70vw;
+}
+
+.main-text-home p {
+    width: 40vw;
+}
+
+.opening-times {
+    width: 30vw;
+}
+
+footer {
+    background-color: #2978B0;
+    display: flex;
+    padding: 10px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer img {
+    height: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-envelope{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.row p {
+    padding-left: 17px;
+    font-size: 0,8rem;
+}
+
+.row-envelope p {
+    padding-left: 7px;
+}
+
+.footer-logo img {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 5px;
+    height: 60px;
+}
+
+.privacy {
+    display: flex;
+    align-items: end;
+}
