@@ -105,7 +105,8 @@
     <div class="column">
 
         <div class="row">
-            <img src="icons/telefoon.png"> <p>0612345678</p>
+            <img src="icons/telefoon.png" alt="phone icon">
+            <p>0612345678</p>
         </div>
 
         <div class="row-envelope">
