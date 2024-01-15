@@ -1,8 +1,10 @@
 <?php
+
+session_start();
 /** @var array[] $db */
 require_once "includes/database.php";
 
-session_start();
+print_r($_SESSION);
 
 if (!isset($_SESSION['login'])) {
     if (isset($_POST['submit'])) {
@@ -14,7 +16,7 @@ if (!isset($_SESSION['login'])) {
 
         if (empty($errors)) {
 
-            $emailquery = "SELECT * FROM `users` WHERE email = '$email'";
+            $emailquery = "SELECT * FROM users WHERE email = '$email'";
             $emailresult = mysqli_query($db, $emailquery);
 
             if ($emailresult) {
@@ -25,7 +27,7 @@ if (!isset($_SESSION['login'])) {
 
                     $_SESSION['login'] = true;
 
-                    header("location: index.php");
+                    header("location: home.php");
                 }
                 else {
                     $errors['loginFailed'] = "De inlog gegevens kloppen niet";
@@ -36,12 +38,17 @@ if (!isset($_SESSION['login'])) {
             }
         }
     }
-} else {
-    header("location: index.php");
+
+}else{
+    header("location: home.php");
     exit();
 }
 
 // Close the connection
+if(isset($_POST['logout'])){
+    unset($_SESSION['login']);
+}
+
 mysqli_close($db);
 ?>
 
@@ -70,9 +77,45 @@ mysqli_close($db);
 
         <div class="whitebox">
             <form class="login_form">
-                <label>Naam</label>
+                <div>
+                    <label class="label" for="firstName"><h2>Naam</h2></label>
+                </div>
+                <div class="input">
+                    <div>
+                        <input class="input" id="firstName" type="text" name="email" placeholder="email" value="<?= $email ?? null ?>" />
+                    </div>
+                        <p class="error">
+                            <?= $errors['firstName'] ?? null ?>
+                        </p>
+                </div>
+                <div>
+                    <label class="label" for="password"><h2>Wachtwoord</h2></label>
+                </div>
+                <div class="input">
+                    <div>
+                        <input class="input" id="password" type="password" name="password" placeholder="wachtwoord" />
+                    </div>
+                    <p class="error">
+                        <?php if(isset($errors['password'])) { ?>
+                            <?= htmlentities($errors['password']) ?? null ?>
+                        <?php } ?>
+
+                        <?php if(isset($errors['loginFailed'])) { ?>
+                            <?= htmlentities($errors['loginFailed']) ?>
+                        <?php } ?>
+                    </p>
+                </div>
+
+                <div>
+                    <button type="submit" name="submit">Login</button>
+                </div>
+
+                <div>
+                    <a href="register.php">Register</a>
+                </div>
             </form>
         </div>
+
     </main>
 </body>
 
