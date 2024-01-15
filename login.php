@@ -1,10 +1,9 @@
 <?php
-
 session_start();
 /** @var array[] $db */
 require_once "includes/database.php";
 
-print_r($_SESSION);
+
 
 if (!isset($_SESSION['login'])) {
     if (isset($_POST['submit'])) {
@@ -16,7 +15,7 @@ if (!isset($_SESSION['login'])) {
 
         if (empty($errors)) {
 
-            $emailquery = "SELECT * FROM users WHERE email = '$email'";
+            $emailquery = "SELECT * FROM `users` WHERE email = '$email'";
             $emailresult = mysqli_query($db, $emailquery);
 
             if ($emailresult) {
@@ -38,7 +37,6 @@ if (!isset($_SESSION['login'])) {
             }
         }
     }
-
 }else{
     header("location: home.php");
     exit();
@@ -115,7 +113,6 @@ mysqli_close($db);
                 </div>
             </form>
         </div>
-
     </main>
 </body>
 
