@@ -18,7 +18,11 @@
 
 <body>
 <nav>
-    <img src="img/logo.png" alt="logo" id="logo">
+    <div class="logo">
+        <a href="home.php">
+            <img src="img/logo.png" alt="logo" id="logo">
+        </a>
+    </div>
 
     <section class="navigation">
         <a href="appointment.php">Afspraak</a>
