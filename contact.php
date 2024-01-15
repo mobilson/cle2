@@ -11,7 +11,7 @@
     <title>homepage</title>
     <link rel="stylesheet" href="css/style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/
+    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
@@ -35,16 +35,23 @@
 </nav>
 
 <main>
+
+    <form name="contact_form" action="" method="POST">
+
     <h1>
         Contact formulier
     </h1>
 
-    <form name="contact_form" action="" method="">
-        <p>Voornaam:   <input type="text" name="first_name" size="20"></p>
-        <p>Achternaam: <input type="text" name="last_name" size="20"></p>
-        <p>email:   <input type="text" name="email" </p>
-        <p>Telefoon: <input type="text" name="phone-number" </p>
-        <p>Bericht: <input type="text-field" name="message"> </p>
+        <label for="first_name">Voornaam: <input id="first_name" type="text" name="first_name" size="20"> </label>
+
+        <label for="last_name">Achternaam: <input id="last_name" type="text" name="last_name" size="20"> </label>
+
+        <label for="tel">Telefoon: <input id="tel" type="tel" name="tel" size="20"> </label>
+
+        <label for="email">E-mailadres: <input id="email" type="text" name="email" size="20"> </label>
+
+        <label for="message">Bericht: <textarea id="message" name="message"></textarea> </label>
+
         <button type="submit" value="send"> Verzenden </button>
     </form>
 

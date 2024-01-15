@@ -1,49 +1,49 @@
 <?php
-/** @var array[] $db */
-require_once "includes/database.php";
-
-session_start();
-
-if (!isset($_SESSION['login'])) {
-    if (isset($_POST['submit'])) {
-
-        $email = mysqli_escape_string($db, $_POST['email']);
-        $password = mysqli_escape_string($db, $_POST['password']);
-
-        require_once 'includes/login_validation.php';
-
-        if (empty($errors)) {
-
-            $emailquery = "SELECT * FROM `users` WHERE email = '$email'";
-            $emailresult = mysqli_query($db, $emailquery);
-
-            if ($emailresult) {
-
-                $userdata = mysqli_fetch_assoc($emailresult);
-
-                if ($userdata && password_verify($password, $userdata['password'])) {
-
-                    $_SESSION['login'] = true;
-
-                    header("location: index.php");
-                }
-                else {
-                    $errors['loginFailed'] = "De inlog gegevens kloppen niet";
-                }
-            }
-            if (empty($userdata)) {
-                $errors['loginFailed'] = "Incorrect login. Email & Password don't match";
-            }
-        }
-    }
-} else {
-    header("location: index.php");
-    exit();
-}
-
-// Close the connection
-mysqli_close($db);
-?>
+///** @var array[] $db */
+//require_once "includes/database.php";
+//
+//session_start();
+//
+//if (!isset($_SESSION['login'])) {
+//    if (isset($_POST['submit'])) {
+//
+//        $email = mysqli_escape_string($db, $_POST['email']);
+//        $password = mysqli_escape_string($db, $_POST['password']);
+//
+//        require_once 'includes/login_validation.php';
+//
+//        if (empty($errors)) {
+//
+//            $emailquery = "SELECT * FROM `users` WHERE email = '$email'";
+//            $emailresult = mysqli_query($db, $emailquery);
+//
+//            if ($emailresult) {
+//
+//                $userdata = mysqli_fetch_assoc($emailresult);
+//
+//                if ($userdata && password_verify($password, $userdata['password'])) {
+//
+//                    $_SESSION['login'] = true;
+//
+//                    header("location: index.php");
+//                }
+//                else {
+//                    $errors['loginFailed'] = "De inlog gegevens kloppen niet";
+//                }
+//            }
+//            if (empty($userdata)) {
+//                $errors['loginFailed'] = "Incorrect login. Email & Password don't match";
+//            }
+//        }
+//    }
+//} else {
+//    header("location: index.php");
+//    exit();
+//}
+//
+//// Close the connection
+//mysqli_close($db);
+//?>
 
 <!doctype html>
 <html lang="en">
