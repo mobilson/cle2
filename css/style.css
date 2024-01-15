@@ -3,6 +3,7 @@ body {
     font-family: Arial;
 }
 
+/*homepage*/
 nav {
     background-color: #86CBE8;
 
@@ -141,12 +142,13 @@ footer img {
     align-items: center;
 }
 
+
+/*Login pagina*/
 .login{
     background-color: #87cce8;
     display: flex;
     align-items: center;
     height: 100vh;
-    justify-content: space-between;
     padding: 0px;
 }
 
@@ -154,5 +156,17 @@ footer img {
     background-color: white;
     height: 100vh;
     width: 30vw;
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
+.login_logo{
+    display: flex;
+    flex: 2;
+    justify-content: center;
+}
+
+.login_form{
+
+}

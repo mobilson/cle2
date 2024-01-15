@@ -64,12 +64,14 @@ mysqli_close($db);
 
 <body class="login-body">
     <main  class="login">
-        <div>
-            <img src="img/logo.png" alt="logo" id="logo">
+        <div class="login_logo">
+            <img src="img/logo.png" alt="logo" id="login_logo">
         </div>
 
         <div class="whitebox">
-            <p>vesvsevsv</p>
+            <form class="login_form">
+                <label>Naam</label>
+            </form>
         </div>
     </main>
 </body>
