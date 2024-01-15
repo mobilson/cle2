@@ -12,6 +12,10 @@ nav {
     padding: 10px 10px;
 }
 
+.logo a:hover {
+    border-bottom: none;
+}
+
 nav img {
     width: 120px;
 }
