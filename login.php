@@ -74,7 +74,7 @@ mysqli_close($db);
         </div>
 
         <div class="whitebox">
-            <form class="login_form">
+            <form class="login_form" method="post">
                 <div>
                     <label class="label" for="firstName"><h2>Naam</h2></label>
                 </div>
@@ -83,7 +83,7 @@ mysqli_close($db);
                         <input class="input" id="firstName" type="text" name="email" placeholder="email" value="<?= $email ?? null ?>" />
                     </div>
                         <p class="error">
-                            <?= $errors['firstName'] ?? null ?>
+                            <?= $errors['email'] ?? null ?>
                         </p>
                 </div>
                 <div>
