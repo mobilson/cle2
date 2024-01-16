@@ -10,6 +10,7 @@ if(isset($_POST['submit'])) {
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $number = $_POST['password'];
 
 
     require_once 'includes/register_validation.php';
@@ -17,7 +18,7 @@ if(isset($_POST['submit'])) {
     if (empty($errors)) {
         $password = password_hash("$password", PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (email, password, first_name, last_name) VALUES ('$email','$password','$firstName','$lastName')";
+        $query = "INSERT INTO users (firstname, lastname, email, password, number) VALUES ('$firstname','$lastname','$email','$password','$number')";
         $result = mysqli_query($db, $query);
 
         if ($result) {
@@ -49,10 +50,6 @@ if(isset($_POST['submit'])) {
 
 <body class="register-body">
 <main  class="register">
-    <div class="register_logo">
-        <img src="img/logo.png" alt="logo" id="register_logo">
-    </div>
-
     <div class="whitebox_register">
         <form class="register_form" method="post">
             <div>
@@ -89,10 +86,15 @@ if(isset($_POST['submit'])) {
             </div>
 
 
-            <a class="register" href="home.php">Registreren</a>
+            <a class="login_button" href="login.php">Ik heb al een account</a>
 
         </form>
     </div>
+
+    <div class="register_logo">
+        <img src="img/logo.png" alt="logo" id="register_logo">
+    </div>
+
 </main>
 </body>
 
