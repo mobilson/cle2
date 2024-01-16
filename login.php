@@ -108,9 +108,9 @@ mysqli_close($db);
                     <button type="submit" name="submit">Login</button>
                 </div>
 
-                <div>
-                    <a href="register.php">Register</a>
-                </div>
+
+                    <a class="register" href="register.php">Registreren</a>
+
             </form>
         </div>
     </main>
