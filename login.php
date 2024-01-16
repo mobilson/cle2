@@ -109,7 +109,7 @@ mysqli_close($db);
                 </div>
 
 
-                    <a class="register" href="register.php">Registreren</a>
+                    <a class="register_button" href="register.php">Registreren</a>
 
             </form>
         </div>
