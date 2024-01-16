@@ -41,16 +41,31 @@
     <h1>
         Contact formulier
     </h1>
+        <div class="contact_css">
+            <label for="first_name">Voornaam: </label>
+            <input id="first_name" type="text" name="first_name" size="20">
+        </div>
 
-        <label for="first_name">Voornaam: <input id="first_name" type="text" name="first_name" size="20"> </label>
+        <div class="contact_css">
+            <label for="last_name">Achternaam: </label>
+            <input id="last_name" type="text" name="last_name" size="20">
+        </div>
 
-        <label for="last_name">Achternaam: <input id="last_name" type="text" name="last_name" size="20"> </label>
+        <div class="contact_css">
+            <label for="tel">Telefoon: </label>
+            <input id="tel" type="tel" name="tel" size="20">
+        </div>
 
-        <label for="tel">Telefoon: <input id="tel" type="tel" name="tel" size="20"> </label>
+        <div class="contact_css">
+            <label for="email">E-mailadres: </label>
+            <input id="email" type="text" name="email" size="20">
+        </div>
 
-        <label for="email">E-mailadres: <input id="email" type="text" name="email" size="20"> </label>
+        <div class="contact_css">
+            <label for="message">Bericht: </label>
+            <textarea id="message" name="message"></textarea>
+        </div>
 
-        <label for="message">Bericht: <textarea id="message" name="message"></textarea> </label>
 
         <button type="submit" value="send"> Verzenden </button>
     </form>
