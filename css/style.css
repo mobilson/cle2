@@ -268,6 +268,9 @@ h2{
 /*Contact*/
 
 .contact_form{
+    color: #0d386b;
+
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -276,9 +279,18 @@ h2{
 
 .contact_form input{
     margin-left: 30px;
+    border: 2px solid #86CBE8;
+    border-radius: 15px;
+    padding: 5px;
 }
 
 .contact_form label {
     padding-top: 10px;
+}
+
+.contact_form textarea {
+    border: 2px solid #86CBE8;
+    border-radius: 15px;
+    padding: 5px;
 }
 

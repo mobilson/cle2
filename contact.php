@@ -34,9 +34,9 @@
     </section>
 </nav>
 
-<main>
+<main class="main-contact">
 
-    <form name="contact_form" action="" method="POST">
+    <form class="contact_form" name="contact_form" action="" method="POST">
 
     <h1>
         Contact formulier
