@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-print_r($_POST);
-print_r($_SESSION);
-
 if(isset($_POST['logout'])){
     unset($_SESSION['login']);
 }

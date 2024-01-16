@@ -76,7 +76,7 @@ mysqli_close($db);
         <div class="whitebox">
             <form class="login_form" method="post">
                 <div>
-                    <label class="label" for="firstName"><h2>Naam</h2></label>
+                    <label class="label" for="firstName"><h2>Email</h2></label>
                 </div>
                 <div class="input">
                     <div>
