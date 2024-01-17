@@ -66,9 +66,9 @@ mysqli_close($db);
 </div>
 
 <main class="main-home">
-    <div class="date">
-        <input type="date">
-        <button type="submit" name="submit">Volgende</button>
+    <div class="time">
+        <input type="time">
+        <button type="submit" name="submit">Bevestigen</button>
     </div>
 
     <div class="opening-times">

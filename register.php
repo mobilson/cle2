@@ -9,6 +9,7 @@ if(isset($_POST['submit'])) {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $email = $_POST['email'];
+    $number = $_POST['number'];
     $password = $_POST['password'];
 
 
@@ -17,7 +18,8 @@ if(isset($_POST['submit'])) {
     if (empty($errors)) {
         $password = password_hash("$password", PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (email, password, first_name, last_name) VALUES ('$email','$password','$firstName','$lastName')";
+        $query = "INSERT INTO users (email, password, first_name, last_name, number)
+                             VALUES ('$email','$password','$firstName','$lastName', '$number')";
         $result = mysqli_query($db, $query);
 
         if ($result) {

@@ -1,17 +1,32 @@
 <?php
+require_once "includes/database.php";
+
+
+//database connection
+/** @var mysqli $db */
+
+
+//Get the result set from the database with a SQL query
+$query = "SELECT * FROM `appointment`";
+$result = mysqli_query($db, $query) or die ('Error: ' . $query);
+
+//Loop through the result to create a custom array
+$reserveringen = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $reserveringen[] = $row;
+}
+//Close connection
+mysqli_close($db);
 
 
 ?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>homepage</title>
     <link rel="stylesheet" href="css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +34,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;700&display=swap"
           rel="stylesheet">
 </head>
-<body>
 
+<body>
 <nav>
     <div class="logo">
         <a href="home.php">
@@ -43,13 +58,25 @@
     <?php }?>
 </nav>
 
-<main>
+<div class="header-home">
+    <header>
+        <a href="appointment.php">Afspraak</a>
+        <a href="contact.php">Contact</a>
+    </header>
+</div>
 
-    <input type="date">
+<main class="main-home">
+    <div class="date">
+        <input type="date">
+        <a href="time.php">
+           <button  type="submit" name="submit"> Volgende </button>
+        </a>
+    </div>
 
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 881 830.5"
-         style="enable-background:new 0 0 881 830.5;" xml:space="preserve">
+    <div class="opening-times">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 881 830.5"
+             style="enable-background:new 0 0 881 830.5;" xml:space="preserve">
                 <style type="text/css">
                     .st0 {
                         fill: #86CBE8;
@@ -71,8 +98,8 @@
                         font-size: 48px;
                     }
                 </style>
-        <path class="st0"
-              d="M829,167.4C812.1,110.2,764.8,70,709.4,52c-18.4-6-38.2-7.3-57.1-9.9c-25.5-1.7-51.3,0.2-76.8,2.6
+            <path class="st0"
+                  d="M829,167.4C812.1,110.2,764.8,70,709.4,52c-18.4-6-38.2-7.3-57.1-9.9c-25.5-1.7-51.3,0.2-76.8,2.6
             	c-39.7,3.7-80.2,8.7-118.2,21.2c-44,14.5-84.9,36.2-118.3,68.6c-16.1,15.6-29.9,34-42,52.8c-8.8,13.7-16.3,28.2-23.1,43
             	c-7.9,17.2-15.2,34.7-22.5,52.1c-6,13.9-12.1,27.8-19.1,41.2c-8.9,17.3-19.7,33.1-31.1,48.8c-5.8,7.9-11.5,16-16.4,24.5
             	c-2.5,4.4-4.7,8.9-6.7,13.5c-4.6,10.5-9.7,21.1-12.6,32.3c-2.9,11.1-4,22.9-5.2,34.2c-0.5,4.5-0.7,9-0.6,13.6
@@ -81,21 +108,22 @@
             	c4.2,0.2,8.3,0.1,12.5-0.3c10.4-1,21.1-2.2,31.3-4.7c28.9-7.2,54.8-23.1,76.9-42.7c11-9.8,20-21.9,28.8-33.7
             	c5.8-7.8,11-16,15.5-24.6c12.2-23.1,21.7-47.9,29.9-72.7c6.8-20.8,12.6-41.8,17.4-63.2c10.8-48.3,17.1-98.1,18.4-147.6
             	c0.2-7,0.3-14,0.2-21.1c-0.1-23.8,2.4-47.5,7.9-70.7c0.2-1,0.5-2,0.7-3C834.9,233.5,838.5,199.6,829,167.4L829,167.4z" />
-        <path class="st0" d="M191.3,710.5c-1-21.9-8.2-44.7-24.8-60c-16.6-15.2-37-24.8-60-24.8c-21.7,0-44.6,9.5-60,24.8
+            <path class="st0" d="M191.3,710.5c-1-21.9-8.2-44.7-24.8-60c-16.6-15.2-37-24.8-60-24.8c-21.7,0-44.6,9.5-60,24.8
             	c-8.3,7.7-14.1,16.8-17.5,27.3c-5.3,10.1-7.7,21-7.3,32.7c1,21.9,8.2,44.7,24.8,60c16.6,15.2,37,24.8,60,24.8
             	c21.7,0,44.6-9.5,60-24.8c8.3-7.7,14.1-16.8,17.5-27.3C189.3,733.1,191.7,722.2,191.3,710.5z" />
-        <text transform="matrix(1 0 0 1 383.94 217.19)" class="st1 st2 st3">Openingstijden</text>
-        <text transform="matrix(1 0 0 1 315.12 353.06)" class="st1 st2 st4">MA</text>
-        <text transform="matrix(1 0 0 1 315.12 410.66)" class="st1 st2 st4">DI</text>
-        <text transform="matrix(1 0 0 1 315.12 468.26)" class="st1 st2 st4">WO</text>
-        <text transform="matrix(1 0 0 1 315.12 525.86)" class="st1 st2 st4">DO</text>
-        <text transform="matrix(1 0 0 1 315.12 583.46)" class="st1 st2 st4">VR</text>
-        <text transform="matrix(1 0 0 1 476.56 353.31)" class="st1 st2 st4">08:00 - 17:00</text>
-        <text transform="matrix(1 0 0 1 476.56 410.31)" class="st1 st2 st4">08:00 - 17:00</text>
-        <text transform="matrix(1 0 0 1 476.56 468.31)" class="st1 st2 st4">08:00 - 17:00</text>
-        <text transform="matrix(1 0 0 1 476.56 526.31)" class="st1 st2 st4">08:00 - 12:00</text>
-        <text transform="matrix(1 0 0 1 476.56 583.31)" class="st1 st2 st4">08:00 - 12:00</text>
+            <text transform="matrix(1 0 0 1 383.94 217.19)" class="st1 st2 st3">Openingstijden</text>
+            <text transform="matrix(1 0 0 1 315.12 353.06)" class="st1 st2 st4">MA</text>
+            <text transform="matrix(1 0 0 1 315.12 410.66)" class="st1 st2 st4">DI</text>
+            <text transform="matrix(1 0 0 1 315.12 468.26)" class="st1 st2 st4">WO</text>
+            <text transform="matrix(1 0 0 1 315.12 525.86)" class="st1 st2 st4">DO</text>
+            <text transform="matrix(1 0 0 1 315.12 583.46)" class="st1 st2 st4">VR</text>
+            <text transform="matrix(1 0 0 1 476.56 353.31)" class="st1 st2 st4">08:00 - 17:00</text>
+            <text transform="matrix(1 0 0 1 476.56 410.31)" class="st1 st2 st4">08:00 - 17:00</text>
+            <text transform="matrix(1 0 0 1 476.56 468.31)" class="st1 st2 st4">08:00 - 17:00</text>
+            <text transform="matrix(1 0 0 1 476.56 526.31)" class="st1 st2 st4">08:00 - 12:00</text>
+            <text transform="matrix(1 0 0 1 476.56 583.31)" class="st1 st2 st4">08:00 - 12:00</text>
             </svg>
+    </div>
 
 </main>
 
@@ -131,4 +159,5 @@
 </footer>
 
 </body>
+
 </html>

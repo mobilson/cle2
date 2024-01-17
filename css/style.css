@@ -91,6 +91,9 @@ footer {
     color: #FFFFFF;
     display: flex;
     justify-content: space-between;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*width: 99%;*/
 }
 
 footer img {
