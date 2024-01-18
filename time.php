@@ -1,24 +1,35 @@
 <?php
-require_once "includes/database.php";
-
-
-//database connection
 /** @var mysqli $db */
 
+session_start();
 
-//Get the result set from the database with a SQL query
-$query = "SELECT * FROM `appointment`";
-$result = mysqli_query($db, $query) or die ('Error: ' . $query);
+require_once "includes/database.php";
 
-//Loop through the result to create a custom array
-$reserveringen = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $reserveringen[] = $row;
+// er moet een iets zijn wat kijkt welke tijden er al gekozen zijn.
+
+if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
+    if (isset($_POST['submit'])) {
+        $date = $_POST['date'];
+        $user_id = $_SESSION['user_id'];
+        $text = $_POST['text'];
+        $update = $_POST['update'];
+        $create = $_POST['create'];
+
+        // document met error meldingen koppelen aan de pagina.
+        // require_once 'includes/errors.php';
+        if (empty($errors)) {
+            $query = "INSERT INTO `appointment`(`user_id`, `date`, `text`, `update`, `create`) VALUES ('$user_id','$date','$text','$update','$create')";
+            $result = mysqli_query($db, $query);
+
+            header('location:index.php');
+        }
+    }
+} else {
+    header("location:login.php");
 }
-//Close connection
+
+//Close the connection
 mysqli_close($db);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,6 +72,9 @@ mysqli_close($db);
 <main>
     <div class="time">
         <input type="time">
+
+        //select voor een dropdown met de beschikbare tijden ipv open invullen
+        <select> </select>
         <button type="submit" name="submit">Bevestigen</button>
     </div>
 
