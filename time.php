@@ -1,5 +1,12 @@
 <?php
 session_start();
+require_once "includes/database.php";
+
+
+//database connection
+/** @var mysqli $db */
+
+session_start();
 /** @var mysqli $db */
 
 $startTime = "12:00";
@@ -76,11 +83,15 @@ mysqli_close($db);
     <section class="navigation">
         <a href="appointment.php">Afspraak</a>
         <a href="contact.php">Contact</a>
+        <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){?>
+            <a href="read.php">Overzicht</a>
+        <?php }  ?>
 
         <?php if(isset($_SESSION['login'])){?>
-            <form method="post" action="home.php">
-                <button name="logout" class="save" type="submit" >Logout</button>
-            </form>
+            <a href="logout.php">logout</a>
+            <!--            <form method="post" action="home.php">-->
+            <!--                <button name="logout" class="save" type="submit" >Logout</button>-->
+            <!--            </form>-->
         <?php }?>
 
         <a href="login.php">

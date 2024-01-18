@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(isset($_POST['submit'])) {
     /** @var array $db */
@@ -10,7 +11,7 @@ if(isset($_POST['submit'])) {
     $lastName = $_POST['lastname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $number = $_POST['password'];
+    $number = $_POST['number'];
 
 
     require_once 'includes/register_validation.php';
@@ -18,12 +19,12 @@ if(isset($_POST['submit'])) {
     if (empty($errors)) {
         $password = password_hash("$password", PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (firstname, lastname, email, password, number) VALUES ('$firstName','$lastName','$email','$password','$number')";
+        $query = "INSERT INTO users (firstname, lastname, email, password, number, role) VALUES ('$firstName','$lastName','$email','$password','$number','user')";
         $result = mysqli_query($db, $query);
 
         if ($result) {
             mysqli_close($db);
-            header("location:home.php");
+            header("location:login.php");
             exit();
         }
     }
