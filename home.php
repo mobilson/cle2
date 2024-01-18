@@ -35,13 +35,14 @@ if(isset($_POST['logout'])){
        <a href="login.php">
            <img src="icons/profile.png">
        </a>
+
+        <?php if(isset($_SESSION['login'])){?>
+            <form method="post" action="home.php">
+                <button name="logout" class="save" type="submit" >Logout</button>
+            </form>
+        <?php }?>
     </section>
 
-    <?php if(isset($_SESSION['login'])){?>
-        <form method="post" action="home.php">
-            <button name="logout" class="save" type="submit" >Logout</button>
-        </form>
-    <?php }?>
 </nav>
 
 <div class="header-home">
