@@ -218,13 +218,15 @@ form button{
     margin-top: 10px;
 
     text-align: center;
-    border: none;
-    color: white;
-    width: 200px;
+    color: #86CBE8;
+    width: 100px;
     height: 30px;
-    border-radius: 15px;
-    background-color: #86CBE8;
-    font-size: 1.3rem;
+    background-color: #FFFFFF;
+    font-size: 1rem;
+}
+
+.whitebox a:hover {
+    border-bottom: 2px solid #86CBE8;
 }
 
 /*register*/
@@ -272,8 +274,19 @@ form button{
 .login_button{
     text-decoration: none;
     margin-top: 10px;
-    font-size: 0.8rem;
+
+    text-align: center;
+    color: #86CBE8;
+    width: 160px;
+    height: 30px;
+    background-color: #FFFFFF;
+    font-size: 1rem;
 }
+
+.whitebox_register a:hover {
+    border-bottom: 2px solid #86CBE8;
+}
+
 /*Contact*/
 
 .main-contact {
