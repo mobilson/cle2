@@ -13,6 +13,6 @@ if (empty($password)) {
     $errors['password'] = "Er moet een wachtwoord ingevuld zijn";
 }
 
-if (strlen($password) < 6) {
-    $errors['password'] = "Wachtwoord moet tenminste 6 lang zijn";
-}
+//if (strlen($password) < 6) {
+//    $errors['password'] = "Wachtwoord moet tenminste 6 lang zijn";
+//}
