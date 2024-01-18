@@ -1,34 +1,8 @@
 <?php
-//database connection
 /** @var mysqli $db */
 
 session_start();
 
-require_once "includes/database.php";
-
-if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
-    if (isset($_POST['submit'])) {
-        $date = $_POST['date'];
-        $user_id = $_SESSION['user_id'];
-        $text = $_POST['text'];
-        $update = $_POST['update'];
-        $create = $_POST['create'];
-
-        // document met error meldingen koppelen aan de pagina.
-       // require_once 'includes/errors.php';
-        if (empty($errors)) {
-            $query = "INSERT INTO `appointment`(`user_id`, `date`, `text`, `update`, `create`) VALUES ('$user_id','$date','$text','$update','$create')";
-            $result = mysqli_query($db, $query);
-
-            header('location:index.php');
-        }
-    }
-} else {
-    header("location:login.php");
-}
-
-//Close the connection
-mysqli_close($db);
 
 
 ?>
@@ -77,15 +51,14 @@ mysqli_close($db);
 </nav>
 
 
-<main class="main-home">
+<main>
 
     <form action="time.php">
 
         <div class="date">
-            <input type="date">
-            <a href="time.php">
-                <button type="submit" name="submit"> Volgende </button>
-            </a>
+            /* weekenden en het verleden uitsluiten */
+            <input type="date" name="date">
+                <button type="submit"> Volgende </button>
         </div>
     </form>
 
