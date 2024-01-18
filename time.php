@@ -47,16 +47,20 @@ mysqli_close($db);
     <section class="navigation">
         <a href="appointment.php">Afspraak</a>
         <a href="contact.php">Contact</a>
+        <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){?>
+            <a href="read.php">Overzicht</a>
+        <?php }  ?>
+
+        <?php if(isset($_SESSION['login'])){?>
+            <a href="logout.php">logout</a>
+            <!--            <form method="post" action="home.php">-->
+            <!--                <button name="logout" class="save" type="submit" >Logout</button>-->
+            <!--            </form>-->
+        <?php }?>
         <a href="login.php">
             <img src="icons/profile.png">
         </a>
     </section>
-
-    <?php if(isset($_SESSION['login'])){?>
-        <form method="post" action="home.php">
-            <button name="logout" class="save" type="submit" >Logout</button>
-        </form>
-    <?php }?>
 </nav>
 
 <div class="header-home">

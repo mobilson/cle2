@@ -1,11 +1,5 @@
 <?php
 session_start();
-
-if(isset($_POST['logout'])){
-    unset($_SESSION['login']);
-    unset($_SESSION['role']);
-}
-print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,16 +32,15 @@ print_r($_SESSION);
         <?php }  ?>
 
         <?php if(isset($_SESSION['login'])){?>
-            <form method="post" action="home.php">
-                <button name="logout" class="save" type="submit" >Logout</button>
-            </form>
+            <a href="logout.php">logout</a>
+<!--            <form method="post" action="home.php">-->
+<!--                <button name="logout" class="save" type="submit" >Logout</button>-->
+<!--            </form>-->
         <?php }?>
        <a href="login.php">
            <img src="icons/profile.png">
        </a>
     </section>
-
-
 </nav>
 
 <div class="header-home">
