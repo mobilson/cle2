@@ -58,14 +58,7 @@ mysqli_close($db);
     <?php }?>
 </nav>
 
-<div class="header-home">
-    <header>
-        <a href="appointment.php">Afspraak</a>
-        <a href="contact.php">Contact</a>
-    </header>
-</div>
-
-<main class="main-home">
+<main>
     <div class="time">
         <input type="time">
         <button type="submit" name="submit">Bevestigen</button>

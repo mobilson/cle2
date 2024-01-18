@@ -73,7 +73,7 @@ mysqli_close($db);
 </nav>
 
 
-<main class="main-home">
+<main>
 
     <form action="time.php">
 
