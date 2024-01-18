@@ -19,7 +19,7 @@ if(isset($_POST['submit'])) {
     if (empty($errors)) {
         $password = password_hash("$password", PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (firstname, lastname, email, password, number) VALUES ('$firstName','$lastName','$email','$password','$number')";
+        $query = "INSERT INTO users (firstname, lastname, email, password, number, role) VALUES ('$firstName','$lastName','$email','$password','$number','user')";
         $result = mysqli_query($db, $query);
 
         if ($result) {
