@@ -3,7 +3,7 @@ body {
     font-family: Arial;
 }
 
-/*homepage*/
+/* Homepage */
 nav {
     background-color: #86CBE8;
 
@@ -150,7 +150,61 @@ footer img {
 }
 
 
-/*Login pagina*/
+/* Create */
+
+.main-create {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* Contact */
+
+.main-contact {
+    padding: 50px;
+}
+
+.main-contact h1 {
+    margin: 0px;
+}
+
+.contact_form{
+    color: #0d386b;
+
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.contact_form input{
+    border: 2px solid #86CBE8;
+    border-radius: 15px;
+    width: 250px;
+;
+}
+
+.contact_form label {
+    padding-top: 10px;
+}
+
+.contact_form textarea {
+    border: 2px solid #86CBE8;
+    border-radius: 15px;
+    width: 250px;
+    height: 150px;
+}
+
+.contact_css {
+    display: flex;
+    justify-content: space-between;
+    width: 25vw;
+}
+
+
+/* Login pagina */
 .login{
     background-color: #87cce8;
     display: flex;
@@ -230,7 +284,7 @@ form button{
     border-bottom: 2px solid #86CBE8;
 }
 
-/*register*/
+/* Register */
 .register{
     background-color: #87cce8;
     display: flex;
@@ -289,49 +343,5 @@ form button{
     border-bottom: 2px solid #86CBE8;
 }
 
-/*Contact*/
-
-.main-contact {
-    padding: 50px;
-}
-
-.main-contact h1 {
-    margin: 0px;
-}
-
-.contact_form{
-    color: #0d386b;
-
-    height: 65vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
-}
-
-.contact_form input{
-    border: 2px solid #86CBE8;
-    border-radius: 15px;
-    width: 250px;
-;
-}
-
-.contact_form label {
-    padding-top: 10px;
-}
-
-.contact_form textarea {
-    border: 2px solid #86CBE8;
-    border-radius: 15px;
-    width: 250px;
-    height: 150px;
-}
-
-.contact_css {
-    display: flex;
-    justify-content: space-between;
-    width: 25vw;
-}
 
 

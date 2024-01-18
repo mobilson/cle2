@@ -49,7 +49,7 @@ session_start();
 </nav>
 
 
-<main>
+<main class="main-create">
 
     <form action="time.php">
 

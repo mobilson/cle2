@@ -1,7 +1,8 @@
 <?php
+session_start();
 /** @var mysqli $db */
 
-session_start();
+$startTime = "12:00";
 
 require_once "includes/database.php";
 
@@ -30,6 +31,24 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
 
 //Close the connection
 mysqli_close($db);
+
+// datum uit url
+// dag verwerken en dag van de week opslaan
+// tijdsloten maken per 30 minuten
+// array voor alle dagen met begin + eindtijd
+/*
+* [
+ * 'maandag' => ["12:00", "17:00"]
+ * ]
+*/
+// loop vanaf starttijd tot eindtijd
+// strtotime() van tijd (12:00) sec te maken
+// deze stop je in een array (times[])
+// $time = $time + 30 * 60
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +90,7 @@ mysqli_close($db);
 
 </nav>
 
-<main>
+<main class="main-create">
     <div class="time">
         <input type="time">
 
