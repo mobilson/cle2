@@ -6,8 +6,8 @@ if(isset($_POST['submit'])) {
 
     require_once 'includes/database.php';
 
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
+    $firstName = $_POST['firstname'];
+    $lastName = $_POST['lastname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $number = $_POST['password'];
@@ -18,12 +18,12 @@ if(isset($_POST['submit'])) {
     if (empty($errors)) {
         $password = password_hash("$password", PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (firstname, lastname, email, password, number) VALUES ('$firstname','$lastname','$email','$password','$number')";
+        $query = "INSERT INTO users (firstname, lastname, email, password, number) VALUES ('$firstName','$lastName','$email','$password','$number')";
         $result = mysqli_query($db, $query);
 
         if ($result) {
             mysqli_close($db);
-            header("location:index.php");
+            header("location:home.php");
             exit();
         }
     }
@@ -53,16 +53,41 @@ if(isset($_POST['submit'])) {
     <div class="whitebox_register">
         <form class="register_form" method="post">
             <div>
-                <label class="label" for="firstName"><h2>Email</h2></label>
+                <label class="label" for="firstname"><h2>Voornaam</h2></label>
             </div>
             <div class="input">
                 <div>
-                    <input class="input" id="firstName" type="text" name="email" placeholder="email" value="<?= $email ?? null ?>" />
+                    <input class="input" id="firstname" type="text" name="firstname" placeholder="voornaam" value="<?= $firstName ?? null ?>" />
+                </div>
+                <p class="error">
+                    <?= $errors['firstName'] ?? null ?>
+                </p>
+            </div>
+
+            <div>
+                <label class="label" for="lastname"><h2>Achternaam</h2></label>
+            </div>
+            <div class="input">
+                <div>
+                    <input class="input" id="lastname" type="text" name="lastname" placeholder="voornaam" value="<?= $lastName ?? null ?>" />
+                </div>
+                <p class="error">
+                    <?= $errors['lastName'] ?? null ?>
+                </p>
+            </div>
+
+            <div>
+                <label class="label" for="email"><h2>Email</h2></label>
+            </div>
+            <div class="input">
+                <div>
+                    <input class="input" id="email" type="text" name="email" placeholder="email" value="<?= $email ?? null ?>" />
                 </div>
                 <p class="error">
                     <?= $errors['email'] ?? null ?>
                 </p>
             </div>
+
             <div>
                 <label class="label" for="password"><h2>Wachtwoord</h2></label>
             </div>
@@ -82,9 +107,20 @@ if(isset($_POST['submit'])) {
             </div>
 
             <div>
-                <button type="submit" name="submit">Registreren</button>
+                <label class="label" for="number"><h2>Telefoonnummer</h2></label>
+            </div>
+            <div class="input">
+                <div>
+                    <input class="input" id="number" type="text" name="number" placeholder="telefoonnummer" value="<?= $number ?? null ?>" />
+                </div>
+                <p class="error">
+                    <?= $errors['number'] ?? null ?>
+                </p>
             </div>
 
+            <div>
+                <button type="submit" name="submit">Registreren</button>
+            </div>
 
             <a class="login_button" href="login.php">Ik heb al een account</a>
 
@@ -92,7 +128,9 @@ if(isset($_POST['submit'])) {
     </div>
 
     <div class="register_logo">
+        <a href="home.php">
         <img src="img/logo.png" alt="logo" id="register_logo">
+            </a>
     </div>
 
 </main>
