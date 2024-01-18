@@ -70,7 +70,9 @@ mysqli_close($db);
 <body class="login-body">
     <main  class="login">
         <div class="login_logo">
-            <img src="img/logo.png" alt="logo" id="login_logo">
+            <a href="home.php">
+                <img src="img/logo.png" alt="logo" id="logo">
+            </a>
         </div>
 
         <div class="whitebox">

@@ -3,12 +3,12 @@ require_once "includes/database.php";
 
 
 //database connection
-/** @var mysqli $database */
+/** @var mysqli $db */
 
 
 //Get the result set from the database with a SQL query
 $query = "SELECT * FROM `appointment`";
-$result = mysqli_query($database, $query) or die ('Error: ' . $query);
+$result = mysqli_query($db, $query) or die ('Error: ' . $query);
 
 //Loop through the result to create a custom array
 $reserveringen = [];
@@ -16,7 +16,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $reserveringen[] = $row;
 }
 //Close connection
-mysqli_close($database);
+mysqli_close($db);
 
 
 
@@ -69,10 +69,10 @@ mysqli_close($database);
 </nav>
 
 <div class="header-home">
-    <header>
-        <a href="appointment.php">Afspraak</a>
-        <a href="contact.php">Contact</a>
-    </header>
+<!--    <header>-->
+<!--        <a href="appointment.php">Afspraak</a>-->
+<!--        <a href="contact.php">Contact</a>-->
+<!--    </header>-->
 </div>
 <hr>
 

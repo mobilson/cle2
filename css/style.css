@@ -91,6 +91,9 @@ footer {
     color: #FFFFFF;
     display: flex;
     justify-content: space-between;
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*width: 99%;*/
 }
 
 footer img {
@@ -213,7 +216,15 @@ form button{
 .register_button{
     text-decoration: none;
     margin-top: 10px;
-    font-size: 0.8rem;
+
+    text-align: center;
+    border: none;
+    color: white;
+    width: 200px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #86CBE8;
+    font-size: 1.3rem;
 }
 
 /*register*/
