@@ -1,19 +1,11 @@
 <?php
 session_start();
+
+/** @var mysqli $db */
 require_once "includes/database.php";
 
+$startTime = "08:00";
 
-//database connection
-/** @var mysqli $db */
-
-session_start();
-/** @var mysqli $db */
-
-$startTime = "12:00";
-
-require_once "includes/database.php";
-
-// er moet een iets zijn wat kijkt welke tijden er al gekozen zijn.
 
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     if (isset($_POST['submit'])) {
@@ -40,22 +32,39 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
 mysqli_close($db);
 
 // datum uit url
+$date = $_GET['date'];
+
 // dag verwerken en dag van de week opslaan
+$day = date('l', strtotime($date));
+print_r($day);
+
 // tijdsloten maken per 30 minuten
-// array voor alle dagen met begin + eindtijd
-/*
-* [
- * 'maandag' => ["12:00", "17:00"]
- * ]
-*/
-// loop vanaf starttijd tot eindtijd
-// strtotime() van tijd (12:00) sec te maken
-// deze stop je in een array (times[])
-// $time = $time + 30 * 60
+    // array voor alle dagen met begin + eindtijd
+    /*
+    * [
+     * 'maandag' => ["08:00", "17:00"]
+     * ]
+     *
+     */
+        // loop vanaf starttijd tot eindtijd
+            // strtotime() van tijd (08:00) sec te maken
+            // deze stop je in een array (times[])
+            // $time = $time + 30 * 60
 
+$openings = [
+        'Monday' =>["08:00", "17:00"],
+        'Tuesday' =>["08:00", "17:00"],
+        'Wednesday' =>["08:00", "17:00"],
+        'Thursday' =>["08:00", "12:00"],
+        'Friday' =>["08:00", "12:00"]
+];
 
-
-
+foreach ($openings as $index => $opening) {
+    if($day == $index) {
+        echo $opening[0] . " - " . $opening[1];
+        echo '<br />';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
