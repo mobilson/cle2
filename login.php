@@ -18,12 +18,13 @@ if (!isset($_SESSION['login'])) {
             $emailquery = "SELECT * FROM `users` WHERE email = '$email'";
             $emailresult = mysqli_query($db, $emailquery);
 
-            if ($emailresult) {
+            if ($emailresult) {     //Only proceed if there is a user with that email
 
-                $userdata = mysqli_fetch_assoc($emailresult);
+                $userdata = mysqli_fetch_assoc($emailresult);   //Get all info from that one user
 
                 if ($userdata && password_verify($password, $userdata['password'])) {
 
+                    $_SESSION['role'] = $userdata['role'];
                     $_SESSION['login'] = true;
 
                     header("location: home.php");

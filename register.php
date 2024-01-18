@@ -24,7 +24,7 @@ if(isset($_POST['submit'])) {
 
         if ($result) {
             mysqli_close($db);
-            header("location:home.php");
+            header("location:login.php");
             exit();
         }
     }
