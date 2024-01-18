@@ -216,18 +216,12 @@ form button{
 .register_button{
     text-decoration: none;
     margin-top: 10px;
-
+    border-bottom: 2px solid #fff;
     text-align: center;
     color: #86CBE8;
-    width: 100px;
-    height: 30px;
     background-color: #FFFFFF;
     font-size: 1rem;
-
-}
-
-.whitebox a:hover {
-    border-bottom: 2px solid #86CBE8;
+    transition: 0.1s ease;
 }
 
 /*register*/
@@ -284,9 +278,9 @@ form button{
     transition: 0.1s ease;
 }
 
-.whitebox_register a:hover {
-    transition: 0.3s ease;
+.whitebox_register a:hover, .whitebox a:hover {
     border-bottom: 2px solid #86CBE8;
+    transition: 0.3s ease;
 }
 
 /*Contact*/

@@ -10,7 +10,7 @@ if(isset($_POST['submit'])) {
     $lastName = $_POST['lastname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $number = $_POST['password'];
+    $number = $_POST['number'];
 
 
     require_once 'includes/register_validation.php';
