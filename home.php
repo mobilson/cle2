@@ -32,15 +32,16 @@ if(isset($_POST['logout'])){
     <section class="navigation">
         <a href="appointment.php">Afspraak</a>
         <a href="contact.php">Contact</a>
-       <a href="login.php">
-           <img src="icons/profile.png">
-       </a>
 
         <?php if(isset($_SESSION['login'])){?>
             <form method="post" action="home.php">
                 <button name="logout" class="save" type="submit" >Logout</button>
             </form>
         <?php }?>
+
+        <a href="login.php">
+            <img src="icons/profile.png">
+        </a>
     </section>
 
 </nav>
