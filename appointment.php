@@ -66,8 +66,7 @@ session_start();
     <form action="time.php">
 
         <div class="date">
-            /* weekenden en het verleden uitsluiten */
-            <input type="text" id="disableWeekends" name="date"/>
+            <input type="date" id="disableWeekends" name="date"/>
                 <button type="submit"> Volgende </button>
         </div>
     </form>
