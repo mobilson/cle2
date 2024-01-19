@@ -6,12 +6,7 @@ require_once "includes/database.php";
 //database connection
 /** @var mysqli $db */
 
-session_start();
-/** @var mysqli $db */
-
-$startTime = "12:00";
-
-require_once "includes/database.php";
+$startTime = "08:00";
 
 // er moet een iets zijn wat kijkt welke tijden er al gekozen zijn.
 
@@ -40,7 +35,12 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
 mysqli_close($db);
 
 // datum uit url
+$date = $_GET['date'];
 // dag verwerken en dag van de week opslaan
+$day = date('l', strtotime($date));
+//SELECT dayofweek($date);
+print_r($day);
+
 // tijdsloten maken per 30 minuten
 // array voor alle dagen met begin + eindtijd
 /*
@@ -52,6 +52,8 @@ mysqli_close($db);
 // strtotime() van tijd (12:00) sec te maken
 // deze stop je in een array (times[])
 // $time = $time + 30 * 60
+
+
 
 
 
