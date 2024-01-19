@@ -85,10 +85,10 @@ mysqli_close($db);
 </nav>
 
 <div class="header-home">
-<!--    <header>-->
-<!--        <a href="appointment.php">Afspraak</a>-->
-<!--        <a href="contact.php">Contact</a>-->
-<!--    </header>-->
+    <!--    <header>-->
+    <!--        <a href="appointment.php">Afspraak</a>-->
+    <!--        <a href="contact.php">Contact</a>-->
+    <!--    </header>-->
 </div>
 <hr>
 
@@ -116,10 +116,10 @@ mysqli_close($db);
                 <td><?= htmlentities($reservering['text']) ?></td>
                 <td></td>
                 <td><form class="space" action="" method="post">
-                    <section class="control">
-                        <button type="submit" name="delete_button" class="button is-link is-danger">Verwijderen</button>
-                    </section>
-                </form></td>
+                        <section class="control">
+                            <button type="submit" name="delete_button" class="button is-link is-danger">Verwijderen</button>
+                        </section>
+                    </form></td>
             </tr>
         <?php } ?>
         </tbody>
@@ -157,4 +157,3 @@ mysqli_close($db);
 </footer>
 </body>
 </html>
-
