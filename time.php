@@ -28,11 +28,23 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     header("location:login.php");
 }
 
-//Close the connection
-mysqli_close($db);
 
 // datum uit url
 $date = $_GET['date'];
+
+// database koppeling gekozen tijden
+ $query = "SELECT * FROM `appointment` WHERE date = $date";
+
+$result = mysqli_query($db, $query);
+
+if ($result)  {
+    $data = array();
+    while ($row = $result ->fetch_assoc() ) {
+        $data[] = $row;
+    }
+}
+
+print_r($data);
 
 // dag verwerken en dag van de week opslaan
 $day = date('l', strtotime($date));
@@ -65,6 +77,10 @@ foreach ($openings as $index => $opening) {
         echo '<br />';
     }
 }
+
+//Close the connection
+mysqli_close($db);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
