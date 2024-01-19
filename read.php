@@ -1,15 +1,14 @@
 <?php
-session_start();
 require_once "includes/database.php";
 
 
 //database connection
-/** @var mysqli $db */
+/** @var mysqli $database */
 
 
 //Get the result set from the database with a SQL query
 $query = "SELECT * FROM `appointment`";
-$result = mysqli_query($db, $query) or die ('Error: ' . $query);
+$result = mysqli_query($database, $query) or die ('Error: ' . $query);
 
 //Loop through the result to create a custom array
 $reserveringen = [];
@@ -17,7 +16,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     $reserveringen[] = $row;
 }
 //Close connection
-mysqli_close($db);
+mysqli_close($database);
 
 
 
@@ -32,11 +31,6 @@ mysqli_close($db);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="stylesheet.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;700&display=swap"
-          rel="stylesheet">
 
     <title>Document</title>
 </head>
@@ -68,16 +62,6 @@ mysqli_close($db);
     <section class="navigation">
         <a href="appointment.php">Afspraak</a>
         <a href="contact.php">Contact</a>
-        <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'admin'){?>
-            <a href="read.php">Overzicht</a>
-        <?php }  ?>
-
-        <?php if(isset($_SESSION['login'])){?>
-            <a href="logout.php">logout</a>
-            <!--            <form method="post" action="home.php">-->
-            <!--                <button name="logout" class="save" type="submit" >Logout</button>-->
-            <!--            </form>-->
-        <?php }?>
         <a href="login.php">
             <img src="icons/profile.png">
         </a>
@@ -85,10 +69,10 @@ mysqli_close($db);
 </nav>
 
 <div class="header-home">
-<!--    <header>-->
-<!--        <a href="appointment.php">Afspraak</a>-->
-<!--        <a href="contact.php">Contact</a>-->
-<!--    </header>-->
+    <header>
+        <a href="appointment.php">Afspraak</a>
+        <a href="contact.php">Contact</a>
+    </header>
 </div>
 <hr>
 
@@ -111,15 +95,15 @@ mysqli_close($db);
         <?php foreach ($reserveringen as $index => $reservering) { ?>
             <tr>
                 <td><?= $index + 1 ?></td>
-                <td><?= htmlentities($reservering['user_id'])  ?></td>
+                <td><?= htmlentities($reservering['naam'])  ?></td>
                 <td><?= htmlentities($reservering['date'])  ?></td>
                 <td><?= htmlentities($reservering['text']) ?></td>
-                <td></td>
-                <td><form class="space" action="" method="post">
+
+                <form class="space" action="" method="post">
                     <section class="control">
                         <button type="submit" name="delete_button" class="button is-link is-danger">Verwijderen</button>
                     </section>
-                </form></td>
+                </form>
             </tr>
         <?php } ?>
         </tbody>
