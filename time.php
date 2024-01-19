@@ -28,7 +28,6 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     header("location:login.php");
 }
 
-
 // datum uit url
 $date = $_GET['date'];
 
@@ -46,22 +45,10 @@ if ($result)  {
 
 print_r($data);
 
+
 // dag verwerken en dag van de week opslaan
 $day = date('l', strtotime($date));
 print_r($day);
-
-// tijdsloten maken per 30 minuten
-    // array voor alle dagen met begin + eindtijd
-    /*
-    * [
-     * 'maandag' => ["08:00", "17:00"]
-     * ]
-     *
-     */
-        // loop vanaf starttijd tot eindtijd
-            // strtotime() van tijd (08:00) sec te maken
-            // deze stop je in een array (times[])
-            // $time = $time + 30 * 60
 
 $openings = [
         'Monday' =>["08:00", "17:00"],
@@ -71,12 +58,26 @@ $openings = [
         'Friday' =>["08:00", "12:00"]
 ];
 
+// kijken welke dag er is
 foreach ($openings as $index => $opening) {
     if($day == $index) {
         echo $opening[0] . " - " . $opening[1];
         echo '<br />';
     }
 }
+
+// tijdsloten maken per 30 minuten
+// array voor alle dagen met begin + eindtijd
+/*
+* [
+ * 'maandag' => ["08:00", "17:00"]
+ * ]
+ *
+ */
+// loop vanaf starttijd tot eindtijd
+// strtotime() van tijd (08:00) sec te maken
+// deze stop je in een array (times[])
+// $time = $time + 30 * 60
 
 //Close the connection
 mysqli_close($db);
