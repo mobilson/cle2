@@ -114,12 +114,9 @@ mysqli_close($db);
                 <td><?= htmlentities($reservering['user_id'])  ?></td>
                 <td><?= htmlentities($reservering['date'])  ?></td>
                 <td><?= htmlentities($reservering['text']) ?></td>
-                <td></td>
-                <td><form class="space" action="" method="post">
-                        <section class="control">
-                            <button type="submit" name="delete_button" class="button is-link is-danger">Verwijderen</button>
-                        </section>
-                    </form></td>
+                <td><a href="detail.php?id=<?= $reservering['id'] ?>">Details</a></td>
+                <td><a href="edit.php?id=<?= $reservering['id'] ?>">Bijwerken</a></td>
+
             </tr>
         <?php } ?>
         </tbody>
