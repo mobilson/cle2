@@ -4,24 +4,21 @@ session_start();
 /** @var mysqli $db */
 require_once "includes/database.php";
 
-$startTime = "08:00";
-
 
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     if (isset($_POST['submit'])) {
-        $date = $_POST['date'];
+        $date = $_GET['date'];
+        $time = $_POST['time'];
         $user_id = $_SESSION['user_id'];
         $text = $_POST['text'];
-        $update = $_POST['update'];
-        $create = $_POST['create'];
 
-        // document met error meldingen koppelen aan de pagina.
-        // require_once 'includes/errors.php';
-        if (empty($errors)) {
-            $query = "INSERT INTO `appointment`(`user_id`, `date`, `text`, `update`, `create`) VALUES ('$user_id','$date','$text','$update','$create')";
+         //document met error meldingen koppelen aan de pagina.
+         //require_once 'includes/errors.php';
+        if (true) {
+            $query = "INSERT INTO `appointment`(`user_id`, `date`, `time`, `text`) VALUES ('$user_id','$date','$time','$text')";
             $result = mysqli_query($db, $query);
 
-            header('location:index.php');
+           // header('location:/home.php');
         }
     }
 } else {
@@ -30,51 +27,67 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
 
 // datum uit url
 $date = $_GET['date'];
-
 // database koppeling gekozen tijden
- $query = "SELECT * FROM `appointment` WHERE date = $date";
+ $query = "SELECT * FROM `appointment` WHERE date = '$date'";
 
 $result = mysqli_query($db, $query);
 
 if ($result)  {
     $data = array();
     while ($row = $result ->fetch_assoc() ) {
-        $data[] = $row;
+        $data[] = date("H:i", strtotime($row['time']));
     }
 }
-
-print_r($data);
 
 
 // dag verwerken en dag van de week opslaan
 $day = date('l', strtotime($date));
-print_r($day);
+//print_r($day);
+
+// tijdsloten maken per 30 minuten
+// array voor alle dagen met begin + eindtijd
+/*
+    [
+    'maandag' => ["08:00", "17:00"]
+    ]
+ */
 
 $openings = [
-        'Monday' =>["08:00", "17:00"],
-        'Tuesday' =>["08:00", "17:00"],
-        'Wednesday' =>["08:00", "17:00"],
-        'Thursday' =>["08:00", "12:00"],
-        'Friday' =>["08:00", "12:00"]
+        'Monday' =>["08:00", "16:30"],
+        'Tuesday' =>["08:00", "16:30"],
+        'Wednesday' =>["08:00", "16:30"],
+        'Thursday' =>["08:00", "11:30"],
+        'Friday' =>["08:00", "11:30"]
 ];
 
 // kijken welke dag er is
 foreach ($openings as $index => $opening) {
     if($day == $index) {
-        echo $opening[0] . " - " . $opening[1];
-        echo '<br />';
+        //echo $opening[0] . " - " . $opening[1];
+        //echo '<br />';
+
+        // starttijd + eindtijd
+        $startTime = strtotime($opening[0]);
+        $endTime = strtotime($opening[1]);
+
+       // echo date('H:i', $startTime) . " - " . date('H:i', $endTime);
+       // echo '<br />';
     }
 }
 
-// tijdsloten maken per 30 minuten
-// array voor alle dagen met begin + eindtijd
-/*
-* [
- * 'maandag' => ["08:00", "17:00"]
- * ]
- *
- */
-// loop vanaf starttijd tot eindtijd
+// Create an array to store all possible time slots
+$allTimeSlots = array();
+
+$currentTime = $startTime;
+while ($currentTime <= $endTime) {
+    $timeSlot = date("H:i", $currentTime);
+    $allTimeSlots[] = $timeSlot;
+    $currentTime = strtotime("+30 minutes", $currentTime);
+}
+
+// Calculate available time slots by removing booked ones
+$availableTimeSlots = array_diff($allTimeSlots, $data);
+
 // strtotime() van tijd (08:00) sec te maken
 // deze stop je in een array (times[])
 // $time = $time + 30 * 60
@@ -129,11 +142,21 @@ mysqli_close($db);
 
 <main class="main-create">
     <div class="time">
-        <input type="time">
+        <form action="" method="post">
+            <select id="time" name="time">
+                <?php
+                foreach ($availableTimeSlots as $timeSlot) {
+                    echo "<option value='$timeSlot'>$timeSlot</option>";
+                }
+                ?>
+            </select>
 
-        //select voor een dropdown met de beschikbare tijden ipv open invullen
-        <select> </select>
-        <button type="submit" name="submit">Bevestigen</button>
+            <label for="message">Aanvullende informatië: </label>
+            <textarea id="text" name="text"></textarea>
+
+
+            <button type="submit" name="submit">Maak afspraak</button>
+        </form>
     </div>
 
     <div class="opening-times">
