@@ -21,6 +21,16 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;700&display=swap"
           rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/redmond/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script>
+        $(document).ready(function () {
+           $('#disableWeekends').datepicker({
+               beforeShowDay: $.datepicker.noWeekends
+           });
+        });
+    </script>
 </head>
 
 <body>
@@ -57,7 +67,7 @@ session_start();
 
         <div class="date">
             /* weekenden en het verleden uitsluiten */
-            <input type="date" name="date">
+            <input type="text" id="disableWeekends" name="date"/>
                 <button type="submit"> Volgende </button>
         </div>
     </form>
