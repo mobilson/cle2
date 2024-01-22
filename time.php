@@ -3,7 +3,6 @@ session_start();
 
 /** @var mysqli $db */
 require_once "includes/database.php";
-print_r($_SESSION);
 
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     if (isset($_POST['submit'])) {
@@ -142,7 +141,7 @@ mysqli_close($db);
 
 <main class="main-create">
     <div class="time">
-        <form action="" method="post">
+        <form action="" method="post" class="time-form">
             <select id="time" name="time">
                 <?php
                 foreach ($availableTimeSlots as $timeSlot) {
@@ -151,9 +150,10 @@ mysqli_close($db);
                 ?>
             </select>
 
-            <label for="message">Aanvullende informatië: </label>
-            <textarea id="text" name="text"></textarea>
-
+            <div class="time-text">
+                <label for="message">Aanvullende informatië: </label>
+                <textarea id="text" name="text"></textarea>
+            </div>
 
             <button type="submit" name="submit">Maak afspraak</button>
         </form>
@@ -236,7 +236,7 @@ mysqli_close($db);
     </div>
 
     <div class="privacy">
-        <a>Privacy verklaring</a>
+        <a href="privacy.php">Privacy verklaring</a>
     </div>
 
     <div class="map">

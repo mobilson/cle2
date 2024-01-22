@@ -8,7 +8,8 @@ require_once "includes/database.php";
 
 
 //Get the result set from the database with a SQL query
-$query = "SELECT * FROM `appointment`";
+$query = "SELECT * FROM `appointment`
+            LEFT JOIN `users` ON appointment.user_id = users.id";
 $result = mysqli_query($db, $query) or die ('Error: ' . $query);
 
 //Loop through the result to create a custom array

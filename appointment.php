@@ -28,10 +28,13 @@ session_start();
         $(document).ready(function () {
            $('#disableWeekends').datepicker({
                beforeShowDay: $.datepicker.noWeekends,
+               minDate: new Date(),
                dateFormat: 'yy-mm-dd'
            });
         });
     </script>
+
+
 </head>
 
 <body>
