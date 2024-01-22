@@ -337,5 +337,7 @@ form button{
     transition: 0.3s ease;
 }
 
-
-
+/*Appointment*/
+.date-input::-webkit-calendar-picker-indicator{
+    display: none;
+}
