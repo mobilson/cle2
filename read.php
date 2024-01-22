@@ -8,7 +8,8 @@ require_once "includes/database.php";
 
 
 //Get the result set from the database with a SQL query
-$query = "SELECT * FROM `appointment`";
+$query = "SELECT * FROM `appointment`
+            LEFT JOIN `users` ON appointment.user_id = users.id";
 $result = mysqli_query($db, $query) or die ('Error: ' . $query);
 
 //Loop through the result to create a custom array
@@ -96,7 +97,6 @@ mysqli_close($db);
                 <th>Datum</th>
                 <th>Tijd</th>
                 <th>Wat</th>
-                <th></th>
             </tr>
             </thead>
 
@@ -104,11 +104,10 @@ mysqli_close($db);
             <?php foreach ($reserveringen as $index => $reservering) { ?>
                 <tr>
                     <td><?= $index + 1 ?></td>
-                    <td><?= htmlentities($reservering['user_id'])  ?></td>
+                    <td><?= htmlentities($reservering['firstname'])  ?></td>
                     <td><?= htmlentities($reservering['date'])  ?></td>
                     <td><?= htmlentities($reservering['text']) ?></td>
                     <td><a href="detail.php?id=<?= $reservering['id'] ?>">Details</a></td>
-                    <td><a href="edit.php?id=<?= $reservering['id'] ?>">Bijwerken</a></td>
 
                 </tr>
             <?php } ?>
