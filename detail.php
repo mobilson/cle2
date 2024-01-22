@@ -38,7 +38,7 @@ mysqli_close($db);
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-        <title>Details - <?= $reservering['firstname'] ?></title>
+        <title>Details - <?= $reservering['user_id'] ?></title>
 </head>
 
 
@@ -71,14 +71,14 @@ mysqli_close($db);
 </nav>
 
 <div class="container px-4">
-        <h1 class="title mt-4"><?= $reservering['firstname'] ?></h1>
+        <h1 class="title mt-4"><?= $reservering['user_id'] ?></h1>
 
     <section class="content">
         <ul>
             <li>Dag: <?= htmlentities($reservering['date'])  ?></li>
             <li>Klant: <?= htmlentities($reservering['user_id'])  ?></li>
             <li>Tijd: <?= htmlentities($reservering['time'])  ?></li>
-            <li>Wat: <?= htmlentities($reservering['text'])  ?></li>
+            <li>Hoelang: <?= htmlentities($reservering['text'])  ?></li>
             <li>Nummer: <?= htmlentities($reservering['number'])  ?></li>
 
 

@@ -18,6 +18,9 @@ if (empty($number)) {
     $errors['number'] = "Er moet een email ingevuld zijn";
 }
 
+if (!is_numeric($number) || strlen($number) > 12 || strlen($number < 8))
+    $errors['number'] = "Dit is niet een geldig nummer";
+
 if (!str_contains($email, '@') && !empty($email)) {
     $errors['email'] = "Ongeldig email";
 }
