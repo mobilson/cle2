@@ -3,7 +3,7 @@ session_start();
 
 /** @var mysqli $db */
 require_once "includes/database.php";
-
+print_r($_SESSION);
 
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     if (isset($_POST['submit'])) {

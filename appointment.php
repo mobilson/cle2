@@ -27,7 +27,8 @@ session_start();
     <script>
         $(document).ready(function () {
            $('#disableWeekends').datepicker({
-               beforeShowDay: $.datepicker.noWeekends
+               beforeShowDay: $.datepicker.noWeekends,
+               dateFormat: 'yy-mm-dd'
            });
         });
     </script>
@@ -66,7 +67,7 @@ session_start();
     <form action="time.php">
 
         <div class="date">
-            <input type="date" id="disableWeekends" name="date"/>
+            <input class="date-input" type="date" id="disableWeekends" name="date"/>
                 <button type="submit"> Volgende </button>
         </div>
     </form>
