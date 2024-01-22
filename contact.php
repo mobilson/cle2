@@ -105,7 +105,7 @@ session_start();
     </div>
 
     <div class="privacy">
-        <a>Privacy verklaring</a>
+        <a href="privacy.php">Privacy verklaring</a>
     </div>
 
     <div class="map">
