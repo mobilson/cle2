@@ -14,8 +14,8 @@ $reserveringId = $_GET['id'];
 
 //Get the record from the database result
 $query = "SELECT * FROM `appointment`
-            LEFT JOIN `users` ON appointment.user_id = users.id
-            WHERE id = $reserveringId";
+            LEFT JOIN users ON appointment.user_id = users.id
+            WHERE users.id = $reserveringId";
 
 $result = mysqli_query($db, $query);
 
@@ -34,6 +34,7 @@ mysqli_close($db);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -71,21 +72,21 @@ mysqli_close($db);
 </nav>
 
 <div class="container px-4">
-        <h1 class="title mt-4"><?= $reservering['user_id'] ?></h1>
+        <h1 class="title mt-4"><?= $reservering['firstname'] . " " . $reservering['lastname'] ?></h1>
 
     <section class="content">
         <ul>
             <li>Dag: <?= htmlentities($reservering['date'])  ?></li>
             <li>Klant: <?= htmlentities($reservering['user_id'])  ?></li>
             <li>Tijd: <?= htmlentities($reservering['time'])  ?></li>
-            <li>Hoelang: <?= htmlentities($reservering['text'])  ?></li>
+            <li>Wat: <?= htmlentities($reservering['text'])  ?></li>
             <li>Nummer: <?= htmlentities($reservering['number'])  ?></li>
 
 
         </ul>
     </section>
     <div>
-        <a class="button" href="read.php">Go back to the list</a>
+        <a class="button" href="read.php">Terug naar overzicht</a>
     </div>
 </div>
 </body>
