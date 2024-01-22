@@ -17,7 +17,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
             $query = "INSERT INTO `appointment`(`user_id`, `date`, `time`, `text`) VALUES ('$user_id','$date','$time','$text')";
             $result = mysqli_query($db, $query);
 
-           header('location:home.php');
+           header('location:email.php');
         }
     }
 } else {

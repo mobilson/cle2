@@ -25,13 +25,11 @@ session_start();
     <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.4/themes/redmond/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script>
-        var dateToday = new Date();
-
         $(document).ready(function () {
            $('#disableWeekends').datepicker({
                beforeShowDay: $.datepicker.noWeekends,
-               dateFormat: 'yy-mm-dd',
-               minDate: dateToday,
+               minDate: new Date(),
+               dateFormat: 'yy-mm-dd'
            });
         });
     </script>
