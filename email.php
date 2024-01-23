@@ -42,6 +42,8 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <cmgt@hr.nl>' . "\r\n";
 
 mail($to,$subject,$message,$headers);
+//print_r($_SESSION);
+//print_r($to);
 header('location:email_confirm.php')
 ?>
 
