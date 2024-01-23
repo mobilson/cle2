@@ -1,12 +1,7 @@
 <?php
 /** @var mysqli $db */
-
 session_start();
-
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,15 +21,22 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script>
         $(document).ready(function () {
-           $('#disableWeekends').datepicker({
-               beforeShowDay: $.datepicker.noWeekends,
-               minDate: new Date(),
-               dateFormat: 'yy-mm-dd'
-           });
+            $('#disableWeekends').datepicker({
+                beforeShowDay: $.datepicker.noWeekends,
+                minDate: new Date(),
+                dateFormat: 'yy-mm-dd'
+            });
         });
+
+        function validateForm() {
+            var selectedDate = document.getElementById("disableWeekends").value;
+            if (selectedDate === "") {
+                alert("Vul een datum in voordat je doorgaat.");
+                return false; // Voorkomt dat het formulier wordt verzonden als de datum niet is ingevuld
+            }
+            return true; // Stuurt het formulier door als de datum is ingevuld
+        }
     </script>
-
-
 </head>
 
 <body>
@@ -64,14 +66,11 @@ session_start();
     </section>
 </nav>
 
-
 <main class="main-create">
-
-    <form action="time.php">
-
+    <form action="time.php" onsubmit="return validateForm()">
         <div class="date">
-            <input class="date-input" type="date" id="disableWeekends" name="date"/>
-                <button type="submit"> Volgende </button>
+            <input class="date-input" type="date" id="disableWeekends" name="date" required>
+            <button type="submit">Volgende</button>
         </div>
     </form>
 
@@ -159,7 +158,6 @@ session_start();
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2487.409918744195!2d4.372323876465173!3d51.43226537179637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c40df548c20c91%3A0x5f60fcf34697416d!2sSiardus%20Bogaertslaan%208%20A%2C%204635%20CM%20Huijbergen!5e0!3m2!1snl!2snl!4v1705049685361!5m2!1snl!2snl" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </footer>
-
 </body>
 
 </html>
