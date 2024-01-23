@@ -1,27 +1,28 @@
 <?php
 session_start();
 require_once "includes/database.php";
-
-
-//database connection
 /** @var mysqli $db */
 
+if (isset($_SESSION['login']) && $_SESSION['role'] === 'admin') {
+    //database connection
 
 //Get the result set from the database with a SQL query
-$query = "SELECT * FROM `appointment`
+    $query = "SELECT * FROM `appointment`
             LEFT JOIN `users` ON appointment.user_id = users.id";
-$result = mysqli_query($db, $query) or die ('Error: ' . $query);
+    $result = mysqli_query($db, $query) or die ('Error: ' . $query);
 
 //Loop through the result to create a custom array
-$reserveringen = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $reserveringen[] = $row;
-}
+    $reserveringen = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $reserveringen[] = $row;
+    }
 //Close connection
+
+} else{
+    header('location:login.php');
+}
+
 mysqli_close($db);
-
-
-
 
 ?>
 
@@ -61,7 +62,7 @@ mysqli_close($db);
 <body>
 <nav>
     <div class="logo">
-        <a href="home.php">
+        <a href="index.php">
             <img src="img/logo.png" alt="logo" id="logo">
         </a>
     </div>
@@ -92,7 +93,6 @@ mysqli_close($db);
         <table class="table is-bordered is-striped  is-hoverable is-fullwidth">
             <thead>
             <tr>
-                <th>#</th>
                 <th>Naam</th>
                 <th>Datum</th>
                 <th>Tijd</th>
@@ -103,10 +103,9 @@ mysqli_close($db);
             <tbody>
             <?php foreach ($reserveringen as $index => $reservering) { ?>
                 <tr>
-                    <td><?= $index + 1 ?></td>
                     <td><?= htmlentities($reservering['firstname'])  ?></td>
                     <td><?= htmlentities($reservering['date'])  ?></td>
-                    <td><?= htmlentities($reservering['text']) ?></td>
+                    <td><?= htmlentities($reservering['time']) ?></td>
                     <td><a href="detail.php?id=<?= $reservering['id'] ?>">Details</a></td>
 
                 </tr>
@@ -117,6 +116,15 @@ mysqli_close($db);
 </main>
 <hr>
 
+    </div>
 
+    <div class="privacy">
+        <a>Privacy verklaring</a>
+    </div>
+
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2487.409918744195!2d4.372323876465173!3d51.43226537179637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c40df548c20c91%3A0x5f60fcf34697416d!2sSiardus%20Bogaertslaan%208%20A%2C%204635%20CM%20Huijbergen!5e0!3m2!1snl!2snl!4v1705049685361!5m2!1snl!2snl" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</footer>
 </body>
 </html>

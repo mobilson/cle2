@@ -10,8 +10,8 @@ $result = mysqli_query($db, $query) or die ('Error: ' . $query);
 $reserveringen = [];
 $reserveringen = mysqli_fetch_assoc($result);
 
-$to = "1074485@hr.nl";
-$subject = "HTML email";
+$to = $_SESSION['email'];
+$subject = "Afspraak bevestiging";
 
 $message = '
 <html>
@@ -42,6 +42,8 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <cmgt@hr.nl>' . "\r\n";
 
 mail($to,$subject,$message,$headers);
+//print_r($_SESSION);
+//print_r($to);
 header('location:email_confirm.php')
 ?>
 
