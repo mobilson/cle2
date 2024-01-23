@@ -112,7 +112,7 @@ mysqli_close($db);
         <?php foreach ($reserveringen as $index => $reservering) { ?>
             <tr>
                 <td><?= $index + 1 ?></td>
-                <td><?= htmlentities($reservering['user_id'])  ?></td>
+                <td><?= htmlentities($reservering['firstname'])  ?></td>
                 <td><?= htmlentities($reservering['date'])  ?></td>
                 <td><?= htmlentities($reservering['text']) ?></td>
                 <td><a href="detail.php?id=<?= $reservering['id'] ?>">Details</a></td>
