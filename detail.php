@@ -30,19 +30,23 @@ $reservering = mysqli_fetch_assoc($result);
 //Close connection
 mysqli_close($db);
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;700&display=swap"
           rel="stylesheet">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+
         <title>Details - <?= $reservering['user_id'] ?></title>
 </head>
 
@@ -51,7 +55,7 @@ mysqli_close($db);
 <body>
 <nav>
     <div class="logo">
-        <a href="home.php">
+        <a href="index.php">
             <img src="img/logo.png" alt="logo" id="logo">
         </a>
     </div>
@@ -81,6 +85,7 @@ mysqli_close($db);
     <section class="content">
         <ul>
             <li>Dag: <?= htmlentities($reservering['date'])  ?></li>
+            <li>Klant: <?= htmlentities($reservering['user_id'])  ?></li>
             <li>Tijd: <?= htmlentities($reservering['time'])  ?></li>
             <li>Wat: <?= htmlentities($reservering['text'])  ?></li>
             <li>Nummer: <?= htmlentities($reservering['number'])  ?></li>
@@ -92,5 +97,8 @@ mysqli_close($db);
         <a class="button" href="read.php">Terug naar overzicht</a>
     </div>
 </div>
+
+
+
 </body>
 </html>

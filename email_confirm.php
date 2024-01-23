@@ -1,10 +1,8 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 
 <head>
     <meta charset="UTF-8">
@@ -12,9 +10,10 @@ session_start();
     <title>homepage</title>
     <link rel="stylesheet" href="css/style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com%22%3E/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;700&display=swap"
+          rel="stylesheet">
 </head>
 
 <body>
@@ -44,45 +43,18 @@ session_start();
     </section>
 </nav>
 
-<main class="main-contact">
+<main class="main-email">
+    <div class="main_text_email">
+        <p> De resevering is gelukt!
+            Er is een bevestigings mail verstuurd naar u email.
+        </p>
+        <a href="index.php" type="submit" name="submit">Home</a>
+    </div>
 
-    <form class="contact_form" name="contact_form" action="" method="POST">
-
-    <h1>
-        Contact formulier
-    </h1>
-        <div class="contact_css">
-            <label for="first_name">Voornaam: </label>
-            <input id="first_name" type="text" name="first_name" size="20">
-        </div>
-
-        <div class="contact_css">
-            <label for="last_name">Achternaam: </label>
-            <input id="last_name" type="text" name="last_name" size="20">
-        </div>
-
-        <div class="contact_css">
-            <label for="tel">Telefoon: </label>
-            <input id="tel" type="tel" name="tel" size="20">
-        </div>
-
-        <div class="contact_css">
-            <label for="email">E-mailadres: </label>
-            <input id="email" type="text" name="email" size="20">
-        </div>
-
-        <div class="contact_css">
-            <label for="message">Bericht: </label>
-            <textarea id="message" name="message"></textarea>
-        </div>
-
-
-        <button type="submit" value="send"> Verzenden </button>
-    </form>
 
 </main>
 
-<footer>
+<footer class="email_footer">
     <div class="column">
 
         <div class="row">
@@ -114,3 +86,5 @@ session_start();
 </footer>
 
 </body>
+
+</html>

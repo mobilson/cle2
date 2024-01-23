@@ -19,7 +19,7 @@ session_start();
 <body>
 <nav>
     <div class="logo">
-        <a href="home.php">
+        <a href="index.php">
             <img src="img/logo.png" alt="logo" id="logo">
         </a>
     </div>
@@ -52,12 +52,11 @@ session_start();
 
 <main class="main-home">
 <div class="main-text-home">
-    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla pharetra ligula in eros posuere, eu varius
-        dolor gravida. Quisque vel rhoncus orci. In ornare quam eu accumsan semper. Aliquam dui ex, placerat a
-        iaculis pharetra, varius id lacus. Vestibulum ac tincidunt nisi, sed fermentum erat. Proin at vulputate
-        lorem, ut sodales tortor. Integer ac felis augue. In porttitor velit in dui aliquam, et viverra lorem
-        commodo. Cras sodales justo in lacus pellentesque, sit amet hendrerit mauris condimentum. Etiam fermentum
-        cursus neque nec suscipit.
+    <p> Welkom bij Bianca Muijs-Kraan!
+
+        Bij ons staat jouw glimlach centraal. Ontdek professionele mondzorg met een persoonlijke touch. Met toewijding
+        en expertise streven we naar een gezonde en stralende mond. Maak vandaag nog een afspraak voor een
+        stralende glimlach!
        </p>
 </div>
 

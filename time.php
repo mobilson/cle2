@@ -16,8 +16,12 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
         if (true) {
             $query = "INSERT INTO `appointment`(`user_id`, `date`, `time`, `text`) VALUES ('$user_id','$date','$time','$text')";
             $result = mysqli_query($db, $query);
+//
 
-           header('location:home.php');
+            $_SESSION['new_id'] = mysqli_insert_id($db);
+
+
+           header('location:email.php');
         }
     }
 } else {
@@ -113,7 +117,7 @@ mysqli_close($db);
 <body>
 <nav>
     <div class="logo">
-        <a href="home.php">
+        <a href="index.php">
             <img src="img/logo.png" alt="logo" id="logo">
         </a>
     </div>

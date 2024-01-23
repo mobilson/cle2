@@ -129,7 +129,7 @@ if(isset($_POST['submit'])) {
     </div>
 
     <div class="register_logo">
-        <a href="home.php">
+        <a href="index.php">
         <img src="img/logo.png" alt="logo" id="register_logo">
             </a>
     </div>

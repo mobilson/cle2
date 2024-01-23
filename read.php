@@ -61,7 +61,7 @@ mysqli_close($db);
 <body>
 <nav>
     <div class="logo">
-        <a href="home.php">
+        <a href="index.php">
             <img src="img/logo.png" alt="logo" id="logo">
         </a>
     </div>
@@ -85,63 +85,37 @@ mysqli_close($db);
     </section>
 </nav>
 
-<div class="header-home">
-    <!--    <header>-->
-    <!--        <a href="appointment.php">Afspraak</a>-->
-    <!--        <a href="contact.php">Contact</a>-->
-    <!--    </header>-->
-</div>
-<hr>
-
-<div class="container px-4">
-    <h1 class="title mt-4">Reserveringen</h1>
-    <hr>
-    <table class="table is-bordered is-striped  is-hoverable is-fullwidth">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Naam</th>
-            <th>Datum</th>
-            <th>Tijd</th>
-            <th>Wat</th>
-            <th></th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <?php foreach ($reserveringen as $index => $reservering) { ?>
+<main class="main-read">
+    <div class="container px-4">
+        <h1 class="title mt-4">Reserveringen</h1>
+        <hr>
+        <table class="table is-bordered is-striped  is-hoverable is-fullwidth">
+            <thead>
             <tr>
-                <td><?= $index + 1 ?></td>
-                <td><?= htmlentities($reservering['firstname'])  ?></td>
-                <td><?= htmlentities($reservering['date'])  ?></td>
-                <td><?= htmlentities($reservering['text']) ?></td>
-                <td><a href="detail.php?id=<?= $reservering['id'] ?>">Details</a></td>
-                <td><a href="edit.php?id=<?= $reservering['id'] ?>">Bijwerken</a></td>
-
+                <th>#</th>
+                <th>Naam</th>
+                <th>Datum</th>
+                <th>Tijd</th>
+                <th>Wat</th>
             </tr>
-        <?php } ?>
-        </tbody>
-    </table>
-</div>
-<footer>
-    <div class="column">
+            </thead>
 
-        <div class="row">
-            <img src="icons/telefoon.png" alt="phone icon">
-            <p>0612345678</p>
-        </div>
+            <tbody>
+            <?php foreach ($reserveringen as $index => $reservering) { ?>
+                <tr>
+                    <td><?= $index + 1 ?></td>
+                    <td><?= htmlentities($reservering['firstname'])  ?></td>
+                    <td><?= htmlentities($reservering['date'])  ?></td>
+                    <td><?= htmlentities($reservering['text']) ?></td>
+                    <td><a href="detail.php?id=<?= $reservering['id'] ?>">Details</a></td>
 
-        <div class="row-envelope">
-            <img src="icons/mail.png"> <p>BiancaMuijs@hotmail.com</p>
-        </div>
-
-        <div class="row">
-            <img src="icons/locatie.png"> <p>Siardusbogeartslaan 1</p>
-        </div>
-
-        <div class="footer-logo">
-            <img src="img/logo.png">
-        </div>
+                </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</main>
+<hr>
 
     </div>
 

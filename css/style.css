@@ -74,6 +74,8 @@ main {
 
 .main-text-home {
     width:70vw;
+
+
 }
 
 .main-text-home p {
@@ -409,4 +411,34 @@ form button{
 /* Appointment */
 .date-input::-webkit-calendar-picker-indicator{
     display: none;
+}
+
+/*email*/
+.email_footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.main-email{
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    align-items: center;
+}
+
+.main_text_email{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main_text_email a {
+    color: black;
+    padding: 5px 40px;
+    border: 2px solid #86CBE8;
+    background-color: #FFFFFF;
+    border-radius: 90px;
+    text-decoration: none;
 }
