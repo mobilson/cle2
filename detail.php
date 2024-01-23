@@ -13,9 +13,9 @@ if(!isset($_GET['id']) || $_GET['id'] == '') {
 $reserveringId = $_GET['id'];
 
 //Get the record from the database result
-$query = "SELECT * FROM `appointment`
-            LEFT JOIN users ON appointment.user_id = users.id
-            WHERE users.id = $reserveringId";
+$query = "SELECT * FROM `appointment` 
+    LEFT  JOIN users ON appointment.user_id = users.id
+    WHERE users.id = $reserveringId";
 
 $result = mysqli_query($db, $query);
 
@@ -30,15 +30,23 @@ $reservering = mysqli_fetch_assoc($result);
 //Close connection
 mysqli_close($db);
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;700&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+
         <title>Details - <?= $reservering['user_id'] ?></title>
 </head>
 
@@ -77,7 +85,6 @@ mysqli_close($db);
     <section class="content">
         <ul>
             <li>Dag: <?= htmlentities($reservering['date'])  ?></li>
-            <li>Klant: <?= htmlentities($reservering['user_id'])  ?></li>
             <li>Tijd: <?= htmlentities($reservering['time'])  ?></li>
             <li>Wat: <?= htmlentities($reservering['text'])  ?></li>
             <li>Nummer: <?= htmlentities($reservering['number'])  ?></li>
@@ -89,5 +96,8 @@ mysqli_close($db);
         <a class="button" href="read.php">Terug naar overzicht</a>
     </div>
 </div>
+
+
+
 </body>
 </html>
