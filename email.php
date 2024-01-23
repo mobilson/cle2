@@ -10,7 +10,7 @@ $result = mysqli_query($db, $query) or die ('Error: ' . $query);
 $reserveringen = [];
 $reserveringen = mysqli_fetch_assoc($result);
 
-$to = "1074485@hr.nl";
+$to = $_SESSION['email'];
 $subject = "HTML email";
 
 $message = '

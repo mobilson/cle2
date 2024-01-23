@@ -27,6 +27,7 @@ if (!isset($_SESSION['login'])) {
                     $_SESSION['role'] = $userdata['role'];
                     $_SESSION['login'] = true;
                     $_SESSION['user_id'] = $userdata['id'];
+                    $_SESSION['role'] = $userdata['email'];
 
                     header("location: home.php");
                 }
