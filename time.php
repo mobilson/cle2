@@ -16,6 +16,10 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
         if (true) {
             $query = "INSERT INTO `appointment`(`user_id`, `date`, `time`, `text`) VALUES ('$user_id','$date','$time','$text')";
             $result = mysqli_query($db, $query);
+//
+
+            $_SESSION['new_id'] = mysqli_insert_id($db);
+
 
            header('location:email.php');
         }
