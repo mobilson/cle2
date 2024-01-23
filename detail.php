@@ -90,6 +90,7 @@ mysqli_close($db);
     <section class="content">
         <ul>
             <li>Dag: <?= htmlentities($reservering['date'])  ?></li>
+            <li>Klant: <?= htmlentities($reservering['user_id'])  ?></li>
             <li>Tijd: <?= htmlentities($reservering['time'])  ?></li>
             <li>Wat: <?= htmlentities($reservering['text'])  ?></li>
             <li>Nummer: <?= htmlentities($reservering['number'])  ?></li>
