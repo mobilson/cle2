@@ -19,7 +19,7 @@ session_start();
 <body>
 <nav>
     <div class="logo">
-        <a href="home.php">
+        <a href="index.php">
             <img src="img/logo.png" alt="logo" id="logo">
         </a>
     </div>
@@ -48,7 +48,7 @@ session_start();
         <p> De resevering is gelukt!
             Er is een bevestigings mail verstuurd naar u email.
         </p>
-        <a href="home.php" type="submit" name="submit">Home</a>
+        <a href="index.php" type="submit" name="submit">Home</a>
     </div>
 
 

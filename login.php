@@ -29,7 +29,7 @@ if (!isset($_SESSION['login'])) {
                     $_SESSION['user_id'] = $userdata['id'];
                     $_SESSION['email'] = $userdata['email'];
 
-                    header("location: home.php");
+                    header("location: index.php");
                 }
                 else {
                     $errors['loginFailed'] = "De inlog gegevens kloppen niet";
@@ -41,7 +41,7 @@ if (!isset($_SESSION['login'])) {
         }
     }
 }else{
-    header("location: home.php");
+    header("location: index.php");
     exit();
 }
 
@@ -73,7 +73,7 @@ mysqli_close($db);
 <body class="login-body">
     <main  class="login">
         <div class="login_logo">
-            <a href="home.php">
+            <a href="index.php">
                 <img src="img/logo.png" alt="logo" id="logo">
             </a>
         </div>
