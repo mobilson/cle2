@@ -7,11 +7,11 @@ if(isset($_POST['submit'])) {
 
     require_once 'includes/database.php';
 
-    $firstName = $_POST['firstname'];
-    $lastName = $_POST['lastname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $number = $_POST['number'];
+    $firstName = mysqli_escape_string($db,$_POST['firstname'] );
+    $lastName = mysqli_escape_string($db,$_POST['lastname']);
+    $email = mysqli_escape_string($db,$_POST['email']);
+    $password =mysqli_escape_string($db,$_POST['password']);
+    $number = mysqli_escape_string($db,$_POST['number']);
 
 
     require_once 'includes/register_validation.php';

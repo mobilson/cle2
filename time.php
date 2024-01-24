@@ -7,9 +7,9 @@ require_once "includes/database.php";
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
     if (isset($_POST['submit'])) {
         $date = $_GET['date'];
-        $time = $_POST['time'];
+        $time = mysqli_escape_string($db, $_POST['time']);
         $user_id = $_SESSION['user_id'];
-        $text = $_POST['text'];
+        $text = mysqli_escape_string($db, $_POST['text']);
 
          //document met error meldingen koppelen aan de pagina.
          //require_once 'includes/errors.php';
