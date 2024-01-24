@@ -2,30 +2,35 @@
 /** @var mysqli $db */
 require_once "includes/database.php";
 
+if (isset($_SESSION['login']) && $_SESSION['role'] === 'admin') {
 // redirect when uri does not contain an id
-if(!isset($_GET['id']) || $_GET['id'] == '') {
-    // redirect to list.php
-    header('Location: read.php');
-    exit;
-}
+    if (!isset($_GET['id']) || $_GET['id'] == '') {
+        // redirect to list.php
+        header('Location: read.php');
+        exit;
+    }
 
 //Retrieve the GET parameter from the 'Super global'
-$reserveringId = $_GET['id'];
+    $reserveringId = $_GET['id'];
 
 //Get the record from the database result
-$query = "SELECT * FROM `appointment`
-            LEFT JOIN users ON appointment.user_id = users.id
-            WHERE users.id = $reserveringId";
+    $query = "SELECT * FROM `appointment` 
+    LEFT  JOIN users ON appointment.user_id = users.id
+    WHERE users.id = $reserveringId";
 
-$result = mysqli_query($db, $query);
+    $result = mysqli_query($db, $query);
 
 //If the album doesn't exist, redirect back to the homepage
-if (mysqli_num_rows($result) == 0) {
-    header('Location: read.php');
-    exit;
-}
+    if (mysqli_num_rows($result) == 0) {
+        header('Location: read.php');
+        exit;
+    }
 
-$reservering = mysqli_fetch_assoc($result);
+
+    $reservering = mysqli_fetch_assoc($result);
+} else{
+    header('location:login.php');
+}
 
 //Close connection
 mysqli_close($db);

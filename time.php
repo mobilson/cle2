@@ -11,8 +11,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
         $user_id = $_SESSION['user_id'];
         $text = mysqli_escape_string($db, $_POST['text']);
 
-         //document met error meldingen koppelen aan de pagina.
-         //require_once 'includes/errors.php';
+
         if (true) {
             $query = "INSERT INTO `appointment`(`user_id`, `date`, `time`, `text`) VALUES ('$user_id','$date','$time','$text')";
             $result = mysqli_query($db, $query);
@@ -66,19 +65,16 @@ $openings = [
 // kijken welke dag er is
 foreach ($openings as $index => $opening) {
     if($day == $index) {
-        //echo $opening[0] . " - " . $opening[1];
-        //echo '<br />';
+
 
         // starttijd + eindtijd
         $startTime = strtotime($opening[0]);
         $endTime = strtotime($opening[1]);
 
-       // echo date('H:i', $startTime) . " - " . date('H:i', $endTime);
-       // echo '<br />';
     }
 }
 
-// Create an array to store all possible time slots
+//Maak array voor alle tijdsloten
 $allTimeSlots = array();
 
 $currentTime = $startTime;
@@ -88,12 +84,9 @@ while ($currentTime <= $endTime) {
     $currentTime = strtotime("+30 minutes", $currentTime);
 }
 
-// Calculate available time slots by removing booked ones
+// Bereken de beschikbare tijden doormiddel van de gereserveerde tijden
 $availableTimeSlots = array_diff($allTimeSlots, $data);
 
-// strtotime() van tijd (08:00) sec te maken
-// deze stop je in een array (times[])
-// $time = $time + 30 * 60
 
 //Close the connection
 mysqli_close($db);

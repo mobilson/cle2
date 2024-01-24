@@ -11,7 +11,7 @@ $reserveringen = [];
 $reserveringen = mysqli_fetch_assoc($result);
 
 $to = $_SESSION['email'];
-$subject = "HTML email";
+$subject = "Afspraak bevestiging";
 
 $message = '
 <html>
